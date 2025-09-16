@@ -1,0 +1,36 @@
+<mat-toolbar class="app-navbar">
+<a routerLink="/" class="logo-container">
+  <img src="assets/imgs/Identidade_Corregedoria_NUPREF.png" alt="Logo da Corregedoria" class="logo-img">
+</a>
+<span class="spacer"></span>
+  <div class="desktop-menu">
+    <a mat-button routerLink="/municipios" routerLinkActive="active-link">Municípios</a>
+    <a mat-button routerLink="/bairros" routerLinkActive="active-link">Bairros</a>
+    <a mat-button routerLink="/areas" routerLinkActive="active-link">Áreas</a>
+    <a mat-button routerLink="/lotes" routerLinkActive="active-link">Lotes</a>
+  </div>
+
+  <div class="mobile-menu">
+    <button mat-icon-button [matMenuTriggerFor]="mobileMenu" aria-label="Abrir menu de navegação">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #mobileMenu="matMenu">
+      <button mat-menu-item routerLink="/municipios">
+        <mat-icon>map</mat-icon>
+        <span>Municípios</span>
+      </button>
+      <button mat-menu-item routerLink="/bairros">
+        <mat-icon>holiday_village</mat-icon>
+        <span>Bairros</span>
+      </button>
+      <button mat-menu-item routerLink="/areas">
+        <mat-icon>layers</mat-icon>
+        <span>Áreas</span>
+      </button>
+      <button mat-menu-item routerLink="/lotes">
+        <mat-icon>grid_on</mat-icon>
+        <span>Lotes</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

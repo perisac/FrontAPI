@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>{{ titulo }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <!-- Nome -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Digite o nome do município">
+      <mat-error *ngIf="form.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Prefeito -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Prefeito</mat-label>
+      <input matInput formControlName="prefeito" placeholder="Digite o nome do prefeito">
+    </mat-form-field>
+
+        <!-- Assessor -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Assessor</mat-label>
+      <input matInput formControlName="assessor_responsavel" placeholder="Digite o nome do assessor">
+    </mat-form-field>
+
+    <!-- Possui Plano Diretor -->
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Possui Plano Diretor</mat-label>
+  <mat-select formControlName="possui_plano_diretor">
+    <mat-option [value]="PossuiPlanoDiretor.SIM">Sim</mat-option>
+    <mat-option [value]="PossuiPlanoDiretor.NAO">Não</mat-option>
+    <mat-option [value]="PossuiPlanoDiretor.SEM_INFORMACAO">Sem Informação</mat-option>
+  </mat-select>
+</mat-form-field>
+    <!-- Botões -->
+    <button mat-raised-button color="primary" type="submit">
+      Salvar
+    </button>
+    <button mat-raised-button color="warn" routerLink="/municipios">
+      Cancelar
+    </button>
+  </form>
+</div>

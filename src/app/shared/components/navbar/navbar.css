@@ -1,0 +1,98 @@
+/* Definindo sua paleta de cores como variáveis para fácil manutenção */
+:host {
+  --cor-primaria: #03658C; /* Azul Escuro */
+  --cor-secundaria: #63A5BF; /* Azul Médio */
+  --cor-destaque-verde: #63A68D; /* Verde Sutil */
+  --cor-destaque-verde-claro: #75BFA4; /* Verde Claro */
+  --cor-texto: #F2F2F2; /* Quase Branco */
+}
+
+.app-navbar {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  display: flex;
+  align-items: center;
+  padding: 0 42px;
+  height: 90px; /* Você pode usar o valor que preferir */
+}
+
+/* Estilo do container da logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Herda a cor do texto do pai (.app-navbar) */
+}
+
+.logo-img {
+  height: 120px; /* ajusta o tamanho da logo */
+  width: auto;  /* mantém proporção */
+}
+
+
+.logo-icon {
+  height: 40px;
+  width: 40px;
+  margin-right: 12px;
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* Espaçador flexível */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Estilo dos links do menu de desktop */
+.desktop-menu a {
+  font-size: 1.2rem;
+  padding: 0 32px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  color: var(--cor-texto);
+}
+
+.desktop-menu a:hover {
+  background-color: var(--cor-secundaria);
+}
+
+/* Estilo para o link ativo (página atual) */
+.desktop-menu a.active-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 3px solid var(--cor-destaque-verde-claro);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Esconde o menu mobile por padrão */
+.mobile-menu {
+  display: none;
+}
+
+/* --- Responsividade --- */
+/* Quando a tela for menor que 768px */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none; /* Esconde o menu de desktop */
+  }
+
+  .mobile-menu {
+    display: block; /* Mostra o menu mobile (ícone hambúrguer) */
+  }
+
+  .app-navbar {
+    padding: 0 12px; /* Reduz o espaçamento lateral */
+  }
+
+  .logo-text {
+    font-size: 1.2rem; /* Diminui um pouco o texto da logo */
+  }
+}
+
+/* Estilo para os ícones dentro do menu dropdown */
+::ng-deep .mat-menu-item mat-icon {
+  margin-right: 16px;
+  color: #555;
+}

@@ -1,0 +1,64 @@
+<div class="container">
+  <h2>{{ titulo }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <div class="form-grid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Área Total (m²)</mat-label>
+        <input matInput formControlName="area_Total" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Área Regularizada (m²)</mat-label>
+        <input matInput formControlName="area_Regularizada" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Área Não Regularizada (m²)</mat-label>
+        <input matInput formControlName="area_NaoRegularizada" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Em Processo de Regularização (m²)</mat-label>
+        <input matInput formControlName="area_EmProcessoRegularizacao" type="number">
+      </mat-form-field>
+
+        <mat-slide-toggle formControlName="area_Publica">
+            Área Pública
+        </mat-slide-toggle>
+
+        <mat-slide-toggle formControlName="area_PreservacaoPermantente">
+            Preservação Permanente
+        </mat-slide-toggle>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Latitude</mat-label>
+        <input matInput formControlName="latitude" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Longitude</mat-label>
+        <input matInput formControlName="longitude" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" formGroupName="bairro">
+        <mat-label>Bairro (ID)</mat-label>
+        <input matInput formControlName="id" placeholder="Digite o ID do bairro">
+        <mat-error *ngIf="form.get('bairro.id')?.hasError('required')">
+          Bairro é obrigatório
+        </mat-error>
+      </mat-form-field>
+          <div *ngIf="form.get('bairro.nome')?.value" class="bairro-selecionado">
+      Bairro selecionado: <strong>{{ form.get('bairro.nome')?.value }}</strong>
+    </div>
+    </div>
+
+    <div class="botoes-acao">
+        <button mat-stroked-button routerLink="/areas">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </div>
+
+  </form>
+</div>

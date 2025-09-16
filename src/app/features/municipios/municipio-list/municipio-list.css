@@ -1,0 +1,106 @@
+/* Definindo a cor primária para ser usada em pontos de destaque */
+:host {
+  --cor-primaria: #03658C;
+  --cor-texto-escuro: #333;
+}
+
+.municipio-list-container {
+  padding: 24px;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- Cabeçalho e Filtros --- */
+.component-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px; /* Aumentei o espaçamento */
+  margin-bottom: 24px;
+}
+
+.header-title {
+  margin: 0;
+  color: var(--cor-texto-escuro);
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.filters-wrapper {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* --- Estilos da Tabela (Visual Limpo) --- */
+.table-container {
+  border-radius: 8px;
+  overflow: hidden; /* Garante que a tabela respeite as bordas arredondadas */
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+/* Cabeçalho da tabela */
+.mat-header-cell {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  font-weight: 600; /* Mais forte */
+}
+
+/* Linhas da tabela */
+.table-row:hover {
+  background-color: #f5f5f5;
+}
+
+.mat-cell {
+  color: var(--cor-texto-escuro);
+  border-bottom-width: 1px;
+  border-bottom-color: #e0e0e0;
+}
+
+
+/* --- CORREÇÃO DEFINITIVA: Coluna de Ações Alinhada --- */
+
+/* 1. Define uma largura fixa para a coluna inteira */
+.mat-column-acoes {
+  width: 160px;
+}
+
+/* 2. Estiliza o CABEÇALHO (<th>) da coluna 'acoes' */
+.mat-column-acoes .mat-header-cell {
+  /* Centraliza o texto 'Ações' horizontalmente */
+  text-align: center;
+}
+
+/* 3. Estiliza a CÉLULA DE DADOS (<td>) da coluna 'acoes' */
+.mat-column-acoes .mat-cell {
+  /* Transforma a célula em um container flexível */
+  display: flex;
+
+  /* Centraliza os botões HORIZONTALMENTE dentro da célula */
+  justify-content: center;
+
+  /* A CHAVE: Alinha os botões VERTICALMENTE no centro da célula */
+  align-items: center;
+  
+  /* Espaçamento entre os botões */
+  gap: 2px;
+}
+
+/* Customização sutil da cor do campo de busca quando focado */
+:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--cor-primaria) !important;
+}
+:host ::ng-deep .mat-focused .mat-form-field-label {
+  color: var(--cor-primaria) !important;
+}

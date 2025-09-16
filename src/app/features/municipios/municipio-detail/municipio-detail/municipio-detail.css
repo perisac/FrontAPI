@@ -1,0 +1,95 @@
+/* Container principal da página de detalhes */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espaço entre o card e o grupo de botões externos */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Estilização do Card de Detalhes */
+.details-card {
+  width: 100%;
+}
+
+/* Separador sutil abaixo do cabeçalho do card */
+.mat-card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 16px;
+}
+
+/* Grid para alinhar as informações de forma limpa */
+.info-grid {
+  margin-top: 16px;
+}
+
+.info-grid p {
+  display: flex;
+  justify-content: space-between; /* Alinha o rótulo à esquerda e o valor à direita */
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0; /* Linha separadora suave */
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info-grid p:last-child {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+.info-grid p strong {
+  color: #555;
+  font-weight: 500;
+}
+
+.info-grid p span {
+  color: #333;
+  text-align: right;
+}
+
+
+
+
+/* Ações do Card */
+.mat-card-actions {
+  padding: 16px !important; /* Garante o espaçamento */
+}
+
+
+/* Container para os botões que ficam fora do card */
+.botoes-externos {
+  display: flex;
+  gap: 16px; /* Espaço entre os botões */
+}
+
+.botoes-externos button {
+  flex-grow: 1; /* Faz os botões dividirem o espaço igualmente */
+}
+
+.botoes-externos mat-icon {
+  margin-right: 8px; /* Espaço entre o ícone e o texto do botão */
+}
+
+/* Ajustes para telas pequenas (celulares) */
+@media (max-width: 600px) {
+  .container {
+    margin: 16px 0;
+  }
+
+  /* Faz o grid de informações ficar vertical */
+  .info-grid p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .info-grid p span {
+    text-align: left;
+  }
+
+  /* Empilha os botões externos */
+  .botoes-externos {
+    flex-direction: column;
+  }
+}

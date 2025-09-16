@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>{{ titulo }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Digite o nome do bairro">
+      <mat-error *ngIf="form.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width" formGroupName="municipio">
+      <mat-label>Município (ID)</mat-label>
+      <input matInput formControlName="id" placeholder="Digite o ID do município">
+      <mat-error *ngIf="form.get('municipio.id')?.hasError('required')">
+        Município é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="form.get('municipio.nome')?.value" class="municipio-selecionado">
+      Município selecionado: <strong>{{ form.get('municipio.nome')?.value }}</strong>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Situação Reurb</mat-label>
+      <mat-select formControlName="situacao_reurb">
+        <mat-option [value]="SituacaoReurb.EM_REGULARIZACAO">Em regularização</mat-option>
+        <mat-option [value]="SituacaoReurb.ESTAGNADO">Estagnado</mat-option>
+        <mat-option [value]="SituacaoReurb.NAO_INICIADA">Não Iniciado</mat-option>
+        <mat-option [value]="SituacaoReurb.SEM_INFORMACAO">Sem Informação</mat-option>
+        <mat-option [value]="SituacaoReurb.REGULARIZADO">Regularizado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo de Reurb</mat-label>
+      <mat-select formControlName="tipo_reurb">
+        <mat-option [value]="TipoReurb.REURB_E">REURB_E</mat-option>
+        <mat-option [value]="TipoReurb.REURB_S">REURB-S</mat-option>
+        <mat-option [value]="TipoReurb.SEM_INFORMACAO">Sem informação</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div class="botoes-acao">
+      <button mat-raised-button color="warn" routerLink="/bairros">
+        Cancelar
+      </button>
+      <button mat-raised-button color="primary" type="submit">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

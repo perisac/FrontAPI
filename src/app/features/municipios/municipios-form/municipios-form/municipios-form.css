@@ -1,0 +1,62 @@
+/* Container principal do formulário, estilizado como um card */
+.container {
+  max-width: 40%; /* Define uma largura máxima para o formulário */
+  margin: 40px auto; /* Centraliza o card na página com margens superior/inferior */
+  padding: 32px 32px; /* Espaçamento interno (vertical | horizontal) */
+  background-color: #fff;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar elevação */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Título do formulário */
+h2 {
+  text-align: center;
+  color: #3f51b5; /* Cor primária do Angular Material */
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Define que todos os campos com a classe .full-width ocuparão 100% da largura */
+.full-width {
+  width: 100%;
+}
+
+/* Adiciona um espaçamento consistente abaixo de cada campo do formulário */
+mat-form-field {
+  margin-bottom: 12px;
+}
+
+/* Container para os botões de ação */
+.botoes {
+  display: flex;
+  justify-content: flex-end; /* Alinha os botões à direita */
+  gap: 12px; /* Cria um espaço entre os botões */
+  margin-top: 20px; /* Espaço acima dos botões */
+}
+
+/* Ajustes para telas menores (celulares) */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px 16px; /* Reduz as margens em telas menores */
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .botoes {
+    flex-direction: column-reverse; /* Empilha os botões verticalmente */
+  }
+
+  .botoes button {
+    width: 100%; /* Faz os botões ocuparem toda a largura */
+    margin: 0; /* Remove margens extras */
+  }
+
+  /* Adiciona um espaço entre os botões empilhados */
+  .botoes button:first-child {
+      margin-top: 8px;
+  }
+}

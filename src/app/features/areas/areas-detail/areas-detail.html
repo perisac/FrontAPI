@@ -1,1 +1,37 @@
-<p>areas-detail works!</p>
+<div *ngIf="area" class="container">
+  <mat-card class="details-card">
+    <mat-card-header>
+      <mat-card-title>Área {{ area.id }}</mat-card-title>
+      <mat-card-subtitle>{{area.bairro.nome}} - {{area.bairro.municipio.nome}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="info-grid">
+        <p><strong>Área Total:</strong> <span>{{ area.area_Total | number }} m²</span></p>
+        <p><strong>Área Regularizada:</strong> <span>{{ area.area_Regularizada | number }} m²</span></p>
+        <p><strong>Área Não Regularizada:</strong> <span>{{ area.area_NaoRegularizada | number }} m²</span></p>
+        <p><strong>Em Processo de Regularização:</strong> <span>{{ area.area_EmProcessoRegularizacao | number }} m²</span></p>
+        <p><strong>É Área Pública?</strong> <span>{{area.area_Publica ? 'Sim': 'Não'}}</span></p>
+        <p><strong>É Preservação Permanente?</strong> <span>{{area.area_PreservacaoPermantente ? 'Sim':'Não'}}</span></p>
+        <p><strong>Latitude:</strong> <span>{{area.latitude}}</span></p>
+        <p><strong>Longitude:</strong> <span>{{area.longitude}}</span></p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-stroked-button routerLink="/areas">Voltar</button>
+      <button mat-raised-button color="primary" [routerLink]="['/areas/editar', area.id]">Editar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="botoes-externos">
+    <button mat-raised-button color="primary" [routerLink]="['/lotes/area', area.id]">
+      <mat-icon>list</mat-icon>
+      Listar Lotes
+    </button>
+    <button mat-raised-button color="accent" [routerLink]="['/lotes/novo', area.id]">
+      <mat-icon>add_circle_outline</mat-icon>
+      Adicionar Lote
+    </button>
+  </div>
+</div>

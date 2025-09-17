@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Bairro, SituacaoReurb, TipoReurb } from '../../../shared/models/bairro.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MunicipioService } from '../../../shared/services/municipio/municipio-service';
@@ -10,7 +10,7 @@ import { BairroService } from '../../../shared/services/bairro/bairro-service';
   templateUrl: './bairros-detail.html',
   styleUrl: './bairros-detail.css'
 })
-export class BairrosDetail {
+export class BairrosDetail implements OnInit {
 
   bairro?: Bairro
   SituacaoReurb = SituacaoReurb; // <- referencia o enum para usar no template

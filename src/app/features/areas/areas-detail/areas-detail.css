@@ -1,0 +1,98 @@
+/* Definindo a cor primária para ser usada em pontos de destaque */
+:host {
+  --cor-primaria: #03658C;
+  --cor-texto-escuro: #333;
+}
+
+/* --- Layout Geral do Container (Padrão Reutilizado) --- */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espaço entre o card e os botões externos */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- Estilo do Card (Padrão Reutilizado) --- */
+.details-card {
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Cabeçalho do card com linha separadora */
+.mat-card-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+}
+
+/* --- Grid de Informações (Padrão Reutilizado) --- */
+.info-grid {
+  margin-top: 16px;
+}
+
+.info-grid p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info-grid p:last-child {
+  border-bottom: none;
+}
+
+.info-grid p strong {
+  color: #555;
+  font-weight: 500;
+  padding-right: 16px; /* Garante que o texto não cole no valor */
+}
+
+.info-grid p span {
+  color: var(--cor-texto-escuro);
+  text-align: right;
+  word-break: break-all; /* Evita que valores longos quebrem o layout */
+}
+
+/* --- Ações do Card (Padrão Reutilizado) --- */
+.mat-card-actions {
+  padding: 16px !important;
+}
+
+/* --- Botões Externos (Padrão Reutilizado) --- */
+.botoes-externos {
+  display: flex;
+  gap: 16px;
+}
+
+.botoes-externos button {
+  flex-grow: 1; /* Faz os botões dividirem o espaço igualmente */
+}
+
+.botoes-externos mat-icon {
+  margin-right: 8px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 600px) {
+  .container {
+    margin: 16px 0;
+  }
+
+  .info-grid p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .info-grid p span {
+    text-align: left;
+  }
+
+  .botoes-externos {
+    flex-direction: column;
+  }
+}

@@ -1,24 +1,31 @@
 <div class="municipio-list-container">
-  <header class="component-header">
-    <h2 class="header-title">Lista de Municípios</h2>
-    
-    <div class="filters-wrapper">
-      <div class="search-container">
-        <mat-form-field appearance="outline" class="search-input">
-          <mat-label>Buscar por nome</mat-label>
-          <input matInput [(ngModel)]="busca" (keyup.enter)="buscar()" placeholder="Ex: Palmas">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="search-container">
-        <mat-form-field appearance="outline" class="search-input">
-          <mat-label>Buscar por assessor</mat-label>
-          <input matInput [(ngModel)]="buscaAssessor" (keyup.enter)="buscarAssessor()" placeholder="Ex: José">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </div>
+<header class="component-header">
+    <!-- NOVO: Container para agrupar título e botão -->
+    <div class="title-container">
+        <h2 class="header-title">Lista de Municípios</h2>
+        <button mat-icon-button color="primary" matToolTip="Adicionar Município" [routerLink]="['/municipios/novo']">
+            <mat-icon>add_circle</mat-icon> <!-- Sugestão de ícone: add_circle -->
+        </button>
     </div>
-  </header>
+    
+    <!-- Os filtros continuam como estavam -->
+    <div class="filters-wrapper">
+        <div class="search-container">
+            <mat-form-field appearance="outline" class="search-input">
+                <mat-label>Buscar por nome</mat-label>
+                <input matInput [(ngModel)]="busca" (keyup.enter)="buscar()" placeholder="Ex: Palmas">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="search-container">
+            <mat-form-field appearance="outline" class="search-input">
+                <mat-label>Buscar por assessor</mat-label>
+                <input matInput [(ngModel)]="buscaAssessor" (keyup.enter)="buscarAssessor()" placeholder="Ex: José">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+</header>
 
   <div class="mat-elevation-z8 table-container">
     <table mat-table [dataSource]="dataSource" class="full-width-table">

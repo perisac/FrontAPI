@@ -8,6 +8,8 @@ import { BairrosForm } from './features/bairros/bairros-form/bairros-form';
 import { BairrosDetail } from './features/bairros/bairros-detail/bairros-detail';
 import { AreasList } from './features/areas/areas-list/areas-list';
 import { AreasForm } from './features/areas/areas-form/areas-form';
+import { AreasDetail } from './features/areas/areas-detail/areas-detail';
+import { LotesList } from './features/lotes/lotes-list/lotes-list';
 
 const routes: Routes = [
   { path: 'municipios', component: MunicipioList },
@@ -16,7 +18,7 @@ const routes: Routes = [
   { path: 'municipios/:id', component: MunicipioDetail},
   { path: 'bairros', component: BairrosList },
   { path: 'bairros/novo/:municipioId', component: BairrosForm },
-  { path : 'bairros/novo', component: BairrosForm },
+  { path: 'bairros/novo', component: BairrosForm },
   { path: 'bairros/editar/:id', component: BairrosForm },
   { path: 'bairros/municipio/:municipioId', component: BairrosList },
   { path: 'bairros/:id', component : BairrosDetail },
@@ -24,7 +26,9 @@ const routes: Routes = [
   { path: 'areas/novo', component: AreasForm},
   { path: 'areas/editar/:id', component: AreasForm},
   { path: 'areas/bairros/:bairroId', component: AreasList},
-  { path: 'areas/novo/:bairroId', component: AreasForm}
+  { path: 'areas/novo/:bairroId', component: AreasForm},
+  { path: 'areas/:id', component: AreasDetail},
+  { path: 'lotes', component: LotesList}
 ];
 
 @NgModule({

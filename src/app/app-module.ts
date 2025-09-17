@@ -28,6 +28,9 @@ import { AreasList } from './features/areas/areas-list/areas-list';
 import { AreasForm } from './features/areas/areas-form/areas-form';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { LotesDetail } from './features/lotes/lotes-detail/lotes-detail';
+import { LotesList } from './features/lotes/lotes-list/lotes-list';
+import { LotesForm } from './features/lotes/lotes-form/lotes-form';
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-to
     Navbar,
     AreasDetail,
     AreasList,
-    AreasForm
+    AreasForm,
+    LotesDetail,
+    LotesList,
+    LotesForm
   ],
   imports: [
 

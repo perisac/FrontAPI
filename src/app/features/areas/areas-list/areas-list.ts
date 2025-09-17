@@ -22,8 +22,7 @@ export class AreasList implements OnInit {
   pageIndex = 0;
   dataSource = new MatTableDataSource<Area>([]);
   displayedColumns: string[] = ['id','bairro','area_Total', 'area_Regularizada'
-                                ,'area_NaoRegularizada','area_Publica','area_PreservacaoPermanente','acoes'];
-
+                              ,'area_NaoRegularizada','area_Publica','area_PreservacaoPermanente','acoes'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

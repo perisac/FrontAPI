@@ -1,6 +1,9 @@
+import { MunicipioSimples } from "./bairro.model";
+
 export interface BairroSimples{
     id: number;
     nome: string;
+    municipio: MunicipioSimples
 }
 
 export class Area{

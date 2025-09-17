@@ -16,8 +16,15 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px; /* Aumentei o espaçamento */
+  gap: 24px;
   margin-bottom: 24px;
+}
+
+/* NOVO: Estilo para o container do título */
+.title-container {
+  display: flex;
+  align-items: center; /* Alinha o título e o botão verticalmente */
+  gap: 16px; /* Espaço entre o título e o botão */
 }
 
 .header-title {
@@ -38,7 +45,6 @@
   align-items: center;
   gap: 8px;
 }
-
 
 /* --- Estilos da Tabela (Visual Limpo) --- */
 .table-container {

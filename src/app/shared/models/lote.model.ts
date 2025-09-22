@@ -1,6 +1,5 @@
 import { Area, BairroSimples } from "./area.model";
 
-
 export interface AreaSimples{
     id: number;
     area_Total: number;
@@ -8,7 +7,6 @@ export interface AreaSimples{
 }
 
 export class Lote{
-
     id!: number;
     numero!: number;
     area_Lote!: number;

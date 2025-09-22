@@ -49,6 +49,9 @@
         <mat-error *ngIf="form.get('bairro.id')?.hasError('required')">
           Bairro é obrigatório
         </mat-error>
+        <mat-error *ngIf="form.get('bairro.id')?.hasError('bairroInvalido')">
+          Bairro inválido
+        </mat-error>
       </mat-form-field>
           <div *ngIf="form.get('bairro.nome')?.value" class="bairro-selecionado">
       Bairro selecionado: <strong>{{ form.get('bairro.nome')?.value }}</strong>
@@ -57,8 +60,7 @@
 
     <div class="botoes-acao">
         <button mat-stroked-button routerLink="/areas">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit">Salvar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Salvar</button>
     </div>
-
   </form>
 </div>

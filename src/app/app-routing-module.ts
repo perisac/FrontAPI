@@ -10,6 +10,8 @@ import { AreasList } from './features/areas/areas-list/areas-list';
 import { AreasForm } from './features/areas/areas-form/areas-form';
 import { AreasDetail } from './features/areas/areas-detail/areas-detail';
 import { LotesList } from './features/lotes/lotes-list/lotes-list';
+import { LotesForm } from './features/lotes/lotes-form/lotes-form';
+import { LotesDetail } from './features/lotes/lotes-detail/lotes-detail';
 
 const routes: Routes = [
   { path: 'municipios', component: MunicipioList },
@@ -28,7 +30,12 @@ const routes: Routes = [
   { path: 'areas/bairros/:bairroId', component: AreasList},
   { path: 'areas/novo/:bairroId', component: AreasForm},
   { path: 'areas/:id', component: AreasDetail},
-  { path: 'lotes', component: LotesList}
+  { path: 'lotes', component: LotesList},
+  { path: 'lotes/novo', component: LotesForm},
+  { path: 'lotes/editar/:id', component: LotesForm},
+  { path: 'lotes/areas/:areaId', component: LotesList},
+  { path: 'lotes/novo/:areaId', component: LotesForm},
+  { path: 'lotes/:id', component: LotesDetail}
 ];
 
 @NgModule({

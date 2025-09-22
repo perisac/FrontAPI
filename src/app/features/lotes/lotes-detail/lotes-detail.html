@@ -1,1 +1,27 @@
-<p>lotes-detail works!</p>
+<div *ngIf="lotes" class="container">
+  <mat-card class="details-card">
+    <mat-card-header>
+      <mat-card-title> Lote: {{ lotes.numero }} - Área: {{lotes.area_rel.id}} - Bairro: {{lotes.area_rel.bairro.nome}} </mat-card-title>
+      <mat-card-subtitle>Detalhes do Bairro</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="info-grid">
+        <p><strong>ID:</strong> <span>{{ lotes.id }}</span></p>
+        <p><strong>Número do Lote:</strong> <span>{{ lotes.numero}}</span></p>
+        <p><strong>Área do Lote: <span> {{lotes.area_Lote | number}} m²</span></strong>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button routerLink="/lotes">Voltar</button>
+      <button mat-raised-button color="primary" [routerLink]="['/lotes/editar', lotes.id]">Editar</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="botoes-externos">
+    <button mat-raised-button color="accent" [routerLink]="['/lotes/novo', lotes.id]">
+      <mat-icon>add_circle_outline</mat-icon>
+      Adicionar Área
+    </button>
+  </div>
+</div>

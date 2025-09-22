@@ -1,0 +1,61 @@
+/* Definindo a cor primária para ser usada em pontos de destaque */
+:host {
+  --cor-primaria: #03658C;
+}
+
+/* --- Layout Geral do Card (Padrão Reutilizado) --- */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: var(--cor-primaria);
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* --- Campos do Formulário --- */
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+/* --- Caixa de Feedback para a Área Selecionada --- */
+.area-selecionada {
+  background-color: #f0f4ff; /* Fundo azul claro */
+  border-left: 4px solid var(--cor-primaria); /* Destaque na cor primária */
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* --- Botões de Ação (Padrão Reutilizado) --- */
+.botoes-acao {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px 16px;
+    padding: 24px;
+  }
+}

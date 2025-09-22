@@ -21,7 +21,7 @@ export class LotesList implements OnInit {
   pageSize = 10;
   pageIndex = 0;
   dataSource = new MatTableDataSource<Lote>([]);
-  displayedColumns: string[] = ['id', 'numeroLote', 'tamanhoLote', 'acoes'];
+  displayedColumns: string[] = ['id','idArea','tamanhoArea' ,'numeroLote', 'tamanhoLote', 'acoes'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -30,7 +30,7 @@ export class LotesList implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.carregarLotes();
   }
 
   carregarLotes(pageIndex = 0, pageSize = 10) {
@@ -79,6 +79,4 @@ export class LotesList implements OnInit {
     this.pageSize = event.pageSize;
     this.carregarLotes(this.pageIndex, this.pageSize);
   }
-
-
 }

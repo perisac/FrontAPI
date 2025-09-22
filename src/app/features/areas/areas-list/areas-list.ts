@@ -73,7 +73,7 @@ export class AreasList implements OnInit {
   }
 
   excluirArea(id: number) {
-    if (confirm('Tem certeza que deseja excluir essa área?')) {
+    if (confirm('Tem certeza que deseja excluir essa área? Todos os lotes relacionadas a ela serão excluídos!')) {
       this.areaService.deletarArea(id).subscribe(() => {
         this.carregarAreas(); // Recarrega a lista após exclusão
       });

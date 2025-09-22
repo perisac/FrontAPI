@@ -68,7 +68,7 @@ export class BairrosList implements OnInit {
   }
 
   excluirBairro(id: number) {
-    if (confirm('Tem certeza que deseja excluir este bairro?')) {
+    if (confirm('Tem certeza que deseja excluir este bairro? Todas as áreas e lotes relacionados a ele tambem serão excluídos!')) {
       this.bairroService.deletarBairro(id).subscribe(() => {
         this.carregarBairros(); // Recarrega a lista após exclusão
       });

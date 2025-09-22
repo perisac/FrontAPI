@@ -13,6 +13,7 @@ export class AreasDetail implements OnInit{
 
   area?: Area;
   assessor? : string;
+  totalLotes =0;
 
   constructor(private route :ActivatedRoute, private areaService: AreaService, ){}
 
@@ -21,6 +22,10 @@ export class AreasDetail implements OnInit{
     this.areaService.buscarPorId(id).subscribe((data) => {
       this.area = data;
     });
+
+    this.areaService.contarLotesDaArea(id).subscribe((count)=>{
+      this.totalLotes = count;
+    })
   }
 
 }

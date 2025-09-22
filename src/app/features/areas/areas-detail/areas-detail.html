@@ -10,11 +10,14 @@
         <p><strong>Área Total:</strong> <span>{{ area.area_Total | number }} m²</span></p>
         <p><strong>Área Regularizada:</strong> <span>{{ area.area_Regularizada | number }} m²</span></p>
         <p><strong>Área Não Regularizada:</strong> <span>{{ area.area_NaoRegularizada | number }} m²</span></p>
-        <p><strong>Em Processo de Regularização:</strong> <span>{{ area.area_EmProcessoRegularizacao | number }} m²</span></p>
-        <p><strong>É Área Pública?</strong> <span>{{area.area_Publica ? 'Sim': 'Não'}}</span></p>
-        <p><strong>É Preservação Permanente?</strong> <span>{{area.area_PreservacaoPermantente ? 'Sim':'Não'}}</span></p>
+        <p><strong>Em Processo de Regularização:</strong> <span>{{ area.area_EmProcessoRegularizacao | number }}
+            m²</span></p>
+        <p><strong>Área Pública</strong> <span>{{area.area_Publica ? 'Sim': 'Não'}}</span></p>
+        <p><strong>Área de Preservação Permanente</strong> <span>{{area.area_PreservacaoPermantente ?
+            'Sim':'Não'}}</span></p>
         <p><strong>Latitude:</strong> <span>{{area.latitude}}</span></p>
         <p><strong>Longitude:</strong> <span>{{area.longitude}}</span></p>
+        <p><strong>Lotes na área:</strong> <span>{{totalLotes}}</span></p>
       </div>
     </mat-card-content>
 
@@ -25,7 +28,7 @@
   </mat-card>
 
   <div class="botoes-externos">
-    <button mat-raised-button color="primary" [routerLink]="['/lotes/area', area.id]">
+    <button mat-raised-button color="primary" [routerLink]="['/lotes/areas', area.id]">
       <mat-icon>list</mat-icon>
       Listar Lotes
     </button>

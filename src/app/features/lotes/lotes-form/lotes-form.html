@@ -1,1 +1,47 @@
-<p>lotes-form works!</p>
+<div class="container">
+    <h2>{{ titulo }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Número do Lote</mat-label>
+            <input matInput formControlName="numero" placeholder="Ex: 14">
+            <mat-error *ngIf="form.get('numero')?.hasError('required')">
+                Número é obrigatório
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Tamanho do Lote (m²)</mat-label>
+            <!-- Corrigido: formControlName="area_Lote" -->
+            <input matInput formControlName="area_Lote" type="number" placeholder="Ex: 360">
+            <mat-error *ngIf="form.get('area_Lote')?.hasError('required')">
+                Tamanho do lote é obrigatório
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width" formGroupName="area_rel">
+            <mat-label>Área Relacionada (ID)</mat-label>
+            <input matInput formControlName="id" placeholder="Digite o ID da área">
+            <mat-error *ngIf="form.get('area_rel.id')?.hasError('required')">
+                A área relacionada é obrigatória
+            </mat-error>
+            <mat-error *ngIf="form.get('area_rel.id')?.hasError('areaInvalida')">
+                A área relacionada é inválida
+            </mat-error>
+        </mat-form-field>
+<!-- 
+        <div *ngIf="form.get('area_rel.id')?.value" class="area-selecionada">
+            Área selecionada: <strong>ID {{ form.get('area_rel.id')?.value }}</strong>
+        </div>
+         -->
+        <div class="botoes-acao">
+            <button mat-stroked-button routerLink="/lotes">
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                Salvar
+            </button>
+        </div>
+    </form>
+</div>

@@ -25,7 +25,7 @@ export class LoteService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  atualizarBairro(id: number, lote: Lote): Observable<Lote> {
+  atualizarLote(id: number, lote: Lote): Observable<Lote> {
     return this.http.put<Lote>(`${this.apiUrl}/${id}`, lote);
   }
 
@@ -33,4 +33,7 @@ export class LoteService {
     return this.http.get<{data: Lote[], total: number}>(`${this.apiUrl}/areas/${areaId}?skip=${skip}&limit=${limit}`);
   }
 
+  buscarPorId(id: number): Observable<Lote> {
+    return this.http.get<Lote>(`${this.apiUrl}/${id}`);
+  }
 }

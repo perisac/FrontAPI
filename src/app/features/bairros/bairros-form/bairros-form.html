@@ -17,6 +17,9 @@
       <mat-error *ngIf="form.get('municipio.id')?.hasError('required')">
         Município é obrigatório
       </mat-error>
+      <mat-error *ngIf="form.get('municipio.id')?.hasError('municipioInvalido')">
+        Município Inválido
+      </mat-error>
     </mat-form-field>
 
     <div *ngIf="form.get('municipio.nome')?.value" class="municipio-selecionado">
@@ -42,12 +45,15 @@
         <mat-option [value]="TipoReurb.SEM_INFORMACAO">Sem informação</mat-option>
       </mat-select>
     </mat-form-field>
-    
+    <mat-error *ngIf="form.hasError('somaMaiorQueTotal')">
+  A soma das áreas regularizada, não regularizada e em processo não pode ser maior que a área total
+    </mat-error>
+
     <div class="botoes-acao">
       <button mat-raised-button color="warn" routerLink="/bairros">
         Cancelar
       </button>
-      <button mat-raised-button color="primary" type="submit">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
         Salvar
       </button>
     </div>

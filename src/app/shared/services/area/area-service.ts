@@ -41,4 +41,8 @@ export class AreaService {
   listarAreasDoBairro(bairroId: number, skip: number, limit: number): Observable<{ data: Area[], total: number }> {
     return this.http.get<{ data: Area[], total: number }>(`${this.apiUrl}/bairros/${bairroId}?skip=${skip}&limit=${limit}`);
   }
+
+  contarLotesDaArea(id: number): Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}/${id}/lotes/count`)
+  }
 }

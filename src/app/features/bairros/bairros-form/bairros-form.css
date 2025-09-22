@@ -45,6 +45,8 @@ mat-form-field {
   justify-content: flex-end; /* Alinha botões à direita */
   gap: 12px; /* Espaço entre os botões */
   margin-top: 24px; /* Espaço acima dos botões */
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
 }
 
 /* Ajustes para telas pequenas (celulares) */

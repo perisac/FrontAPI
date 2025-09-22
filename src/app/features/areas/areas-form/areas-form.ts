@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { AreaService } from '../../../shared/services/area/area-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BairroService } from '../../../shared/services/bairro/bairro-service';
@@ -26,79 +26,81 @@ export class AreasForm implements OnInit {
     private fb: FormBuilder,
     private bairroService: BairroService
   ) { }
-  
+
   ngOnInit(): void {
-      this.form = this.fb.group({
+    this.form = this.fb.group({
       area_Total: [null, [Validators.required, Validators.min(0)]],
-      area_Regularizada: [null, [Validators.min(0)]],
-      area_NaoRegularizada: [null, [Validators.min(0)]],
-      area_EmProcessoRegularizacao: [null, [Validators.min(0)]],
+      area_Regularizada: [null, [Validators.min(0), this.validarMaiorQueTotal.bind(this, 'area_Regularizada')]],
+      area_NaoRegularizada: [null, [Validators.min(0), this.validarMaiorQueTotal.bind(this, 'area_NaoRegularizada')]],
+      area_EmProcessoRegularizacao: [null, [Validators.min(0), this.validarMaiorQueTotal.bind(this, 'area_EmProcessoRegularizacao')]],
       area_Publica: [false],
       area_PreservacaoPermantente: [false],
       latitude: [null, [Validators.required]],
       longitude: [null, [Validators.required]],
       bairro: this.fb.group({
-      id: [
-        '',
-        {
-          validators: [Validators.required],
-          asyncValidators: [CustomValidators.bairroExistente(this.bairroService)],
-          updateOn: 'blur'
-        }
-      ],
-      nome: ['']
-      })
+        id: [
+          '',
+          {
+            validators: [Validators.required],
+            asyncValidators: [CustomValidators.bairroExistente(this.bairroService)],
+            updateOn: 'blur'
+          }
+        ],
+        nome: ['']
+      },
+    {validators : this.validarSomaAreas}),
+      
     });
 
-     // 📌 Caso 1: formulário aberto a partir do municipio-detail (rota com municipioId)
-  const bairroId = this.route.snapshot.paramMap.get('bairroId');
-  if (bairroId) {
-    this.form.patchValue({
-      bairro: { id: Number(bairroId) }
-    });
-
-    // trava o campo id para não permitir alteração
-    this.form.get('bairro.id')?.disable();
-
-    // (opcional) preenche nome do município para exibir
-    this.bairroService.buscarPorId(Number(bairroId)).subscribe(m => {
+    // 📌 Caso 1: formulário aberto a partir do municipio-detail (rota com municipioId)
+    const bairroId = this.route.snapshot.paramMap.get('bairroId');
+    if (bairroId) {
       this.form.patchValue({
-        bairro: { nome: m.nome }
+        bairro: { id: Number(bairroId) }
       });
-    });
-  }
 
-  // 📌 Caso 2: edição de bairro existente
-  this.id = Number(this.route.snapshot.paramMap.get('id'));
-  if (this.id) {
-    this.titulo = 'Editar Área';
-    this.areaService.buscarPorId(this.id).subscribe(area => {
-      this.form.patchValue(area);
+      // trava o campo id para não permitir alteração
+      this.form.get('bairro.id')?.disable();
 
-      // se vier com município já definido, trava o campo
-      if (area.bairro?.id) {
+      // (opcional) preenche nome do município para exibir
+      this.bairroService.buscarPorId(Number(bairroId)).subscribe(m => {
+        this.form.patchValue({
+          bairro: { nome: m.nome }
+        });
+      });
+    }
+
+    // 📌 Caso 2: edição de bairro existente
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.id) {
+      this.titulo = 'Editar Área';
+      this.areaService.buscarPorId(this.id).subscribe(area => {
+        this.form.patchValue(area);
+
+        // se vier com município já definido, trava o campo
+        if (area.bairro?.id) {
+          this.form.get('bairro.id')?.disable();
+        }
+      });
+    }
+
+    // 📌 Caso 3: params por querystring (opcional, vindo do router.navigate)
+    this.route.queryParams.subscribe(params => {
+      if (params['bairro_id'] && params['bairro_nome']) {
+        this.form.patchValue({
+          bairro: {
+            id: params['bairro_id'],
+            nome: params['bairro_nome']
+          }
+        });
+
+        // trava o id, pois já foi definido pela navegação
         this.form.get('bairro.id')?.disable();
       }
     });
   }
 
-  // 📌 Caso 3: params por querystring (opcional, vindo do router.navigate)
-  this.route.queryParams.subscribe(params => {
-    if (params['bairro_id'] && params['bairro_nome']) {
-      this.form.patchValue({
-        bairro: {
-          id: params['bairro_id'],
-          nome: params['bairro_nome']
-        }
-      });
-
-      // trava o id, pois já foi definido pela navegação
-      this.form.get('bairro.id')?.disable();
-    }
-  });
-}
-
-salvar() {
+  salvar() {
     if (this.form.invalid) return;
 
     const area: Area = this.form.getRawValue();
@@ -127,8 +129,19 @@ salvar() {
     }
   }
 
-  
+  validarMaiorQueTotal(campo: string, control: AbstractControl) {
+    const total = this.form?.get('area_Total')?.value || 0;
+    return control.value > total ? { maiorQueTotal: true } : null;
+  }
 
+  validarSomaAreas(group: FormGroup): ValidationErrors | null {
+    const total = group.get('area_Total')?.value || 0;
+    const regularizada = group.get('area_Regularizada')?.value || 0;
+    const naoRegularizada = group.get('area_NaoRegularizada')?.value || 0;
+    const emProcesso = group.get('area_EmProcessoRegularizacao')?.value || 0;
 
+    const soma = regularizada + naoRegularizada + emProcesso;
 
+    return soma > total ? { somaMaiorQueTotal: true } : null;
+  }
 }

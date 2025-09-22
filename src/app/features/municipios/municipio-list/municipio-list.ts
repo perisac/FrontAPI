@@ -75,7 +75,7 @@ export class MunicipioList implements OnInit, AfterViewInit {
   }
 
   deletar(id_ibge: number) {
-    if (confirm('Tem certeza que deseja deletar este município?')) {
+    if (confirm('Tem certeza que deseja deletar este município? Todos os bairros, áreas e lotes relacionados a ele também serão excluídos!')) {
       this.municipioService.deletar(id_ibge).subscribe(() => {
         // Após deletar, verifique se precisa voltar uma página
         const totalPaginas = Math.ceil(this.totalRegistros / this.pageSize);

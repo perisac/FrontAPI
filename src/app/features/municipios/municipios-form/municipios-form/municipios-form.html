@@ -34,11 +34,14 @@
   </mat-select>
 </mat-form-field>
     <!-- Botões -->
-    <button mat-raised-button color="primary" type="submit">
-      Salvar
-    </button>
+    <div class="botoes-acao">
+
     <button mat-raised-button color="warn" routerLink="/municipios">
       Cancelar
     </button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </button>
+    </div>
   </form>
 </div>

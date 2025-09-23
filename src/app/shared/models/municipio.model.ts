@@ -6,8 +6,6 @@ import { Bairro } from "./bairro.model";
   SEM_INFORMACAO = 'Sem informação'
 }
 
-// export type PlanoDiretor = 'SIM' | 'NAO' | 'SEM_INFORMACAO';
-
 export class Municipio {
   id!: number;
   nome!: string;

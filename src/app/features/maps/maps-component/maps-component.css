@@ -1,0 +1,8 @@
+/* mapa.component.scss */
+#map {
+  height: 60%; /* ocupa tela toda */
+  width: 40%;
+  background-color: white;
+  border: 4px;
+  border-color: black;
+}

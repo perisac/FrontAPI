@@ -11,6 +11,12 @@
   font-size: 1.8rem;
 }
 
+.title-container {
+  display: flex;
+  align-items: center; /* Alinha o título e o botão verticalmente */
+  gap: 16px; /* Espaço entre o título e o botão */
+}
+
 .filters-wrapper {
   display: flex;
   gap: 16px;

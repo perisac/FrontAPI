@@ -31,6 +31,7 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-to
 import { LotesDetail } from './features/lotes/lotes-detail/lotes-detail';
 import { LotesList } from './features/lotes/lotes-list/lotes-list';
 import { LotesForm } from './features/lotes/lotes-form/lotes-form';
+import { MapsComponent } from './features/maps/maps-component/maps-component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { LotesForm } from './features/lotes/lotes-form/lotes-form';
     AreasForm,
     LotesDetail,
     LotesList,
-    LotesForm
+    LotesForm,
+    MapsComponent
   ],
   imports: [
 

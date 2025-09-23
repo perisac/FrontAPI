@@ -1,6 +1,11 @@
 <div class="area-list-container">
     <header class="component-header">
+        <div class="title-container">
         <h2 class="header-title">Lista de Áreas</h2>
+        <button mat-icon-button color="primary" matToolTip="Adicionar Área" [routerLink]="['/areas/novo']">
+            <mat-icon>add_circle</mat-icon> <!-- Sugestão de ícone: add_circle -->
+        </button>
+        </div>
         <div class="filters-wrapper">
             <div class="search-container">
                 <mat-form-field appearance="outline" class="search-input">

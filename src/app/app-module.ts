@@ -32,6 +32,8 @@ import { LotesDetail } from './features/lotes/lotes-detail/lotes-detail';
 import { LotesList } from './features/lotes/lotes-list/lotes-list';
 import { LotesForm } from './features/lotes/lotes-form/lotes-form';
 import { MapsComponent } from './features/maps/maps-component/maps-component';
+import { GraphsComponent } from './features/graphs/graphs-component/graphs-component';
+import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2-charts';
 
 
 @NgModule({
@@ -50,10 +52,13 @@ import { MapsComponent } from './features/maps/maps-component/maps-component';
     LotesDetail,
     LotesList,
     LotesForm,
-    MapsComponent
+    MapsComponent,
+    GraphsComponent
+
   ],
   imports: [
-
+    
+    BaseChartDirective,
     MatSlideToggle,
     MatSlideToggleModule,
     MatCheckbox,
@@ -84,7 +89,8 @@ import { MapsComponent } from './features/maps/maps-component/maps-component';
     BrowserAnimationsModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [App]
 })

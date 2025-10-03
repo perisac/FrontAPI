@@ -34,6 +34,9 @@ import { LotesForm } from './features/lotes/lotes-form/lotes-form';
 import { MapsComponent } from './features/maps/maps-component/maps-component';
 import { GraphsComponent } from './features/graphs/graphs-component/graphs-component';
 import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2-charts';
+import { AssessorList } from './features/assessor/assessor-list/assessor-list';
+import { AssessorDetail } from './features/assessor/assessor-detail/assessor-detail';
+import { AssessorForm } from './features/assessor/assessor-form/assessor-form';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2
     LotesList,
     LotesForm,
     MapsComponent,
-    GraphsComponent
+    GraphsComponent,
+    AssessorList,
+    AssessorDetail,
+    AssessorForm
 
   ],
   imports: [

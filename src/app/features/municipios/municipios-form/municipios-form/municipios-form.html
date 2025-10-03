@@ -19,10 +19,14 @@
     </mat-form-field>
 
         <!-- Assessor -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Assessor</mat-label>
-      <input matInput formControlName="assessor_responsavel" placeholder="Digite o nome do assessor">
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Assessor(es)</mat-label>
+    <mat-select formControlName="assessores" multiple>
+      <mat-option *ngFor="let a of assessoresDisponiveis" [value]="a">
+        {{ a.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
     <!-- Possui Plano Diretor -->
 <mat-form-field appearance="outline" class="full-width">

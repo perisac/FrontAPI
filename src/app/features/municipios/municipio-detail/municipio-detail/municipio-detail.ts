@@ -15,7 +15,7 @@ import { Bairro } from '../../../../shared/models/bairro.model';
 export class MunicipioDetail implements OnInit {
 
     municipio?: Municipio;
-    PossuiPlanoDiretor = PossuiPlanoDiretor; // <- referencia o enum para usar no template
+    PossuiPlanoDiretor = PossuiPlanoDiretor;
     totalBairros: number = 0;
     mostrarBairros = false;
     municipioId!: number;

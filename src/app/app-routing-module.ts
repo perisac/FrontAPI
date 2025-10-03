@@ -13,6 +13,9 @@ import { LotesList } from './features/lotes/lotes-list/lotes-list';
 import { LotesForm } from './features/lotes/lotes-form/lotes-form';
 import { LotesDetail } from './features/lotes/lotes-detail/lotes-detail';
 import { MapsComponent } from './features/maps/maps-component/maps-component';
+import { AssessorList } from './features/assessor/assessor-list/assessor-list';
+import { AssessorForm } from './features/assessor/assessor-form/assessor-form';
+import { AssessorDetail } from './features/assessor/assessor-detail/assessor-detail';
 
 const routes: Routes = [
   { path: 'municipios', component: MunicipioList },
@@ -37,8 +40,11 @@ const routes: Routes = [
   { path: 'lotes/areas/:areaId', component: LotesList},
   { path: 'lotes/novo/:areaId', component: LotesForm},
   { path: 'lotes/:id', component: LotesDetail},
-  { path: '', component: MapsComponent } // Home = Mapa
-
+  { path: 'assessores', component: AssessorList},
+  { path: 'assessores/novo', component: AssessorForm},
+  { path: 'assessores/editar/:id', component: AssessorForm},
+  { path: 'assessores/:id', component: AssessorDetail},
+  // { path: '', component: MapsComponent } // Home = Mapa
 ];
 
 @NgModule({

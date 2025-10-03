@@ -1,0 +1,29 @@
+<div *ngIf="assessor" class="container">
+  <mat-card class="details-card">
+    <mat-card-header>
+      <mat-card-title>Informações do Assessor</mat-card-title>
+      <mat-card-subtitle>{{ assessor.nome }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Foto do assessor -->
+      <div class="foto-container" *ngIf="fotoUrl">
+        <img [src]="fotoUrl" alt="Foto do Assessor" class="foto-assessor">
+      </div>
+
+      <!-- Listagem de municípios -->
+      <div class="municipios-container" *ngIf="municipios.length > 0">
+        <h3>Municípios do Assessor ({{ totalMunicipios }})</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let municipio of municipios">
+            {{ municipio.nome }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-stroked-button routerLink="/assessores">Voltar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

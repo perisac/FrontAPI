@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>{{ titulo }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <!-- Nome -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Digite o nome do Assessor">
+      <mat-error *ngIf="form.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Upload de Foto -->
+    <div class="photo-upload-container">
+      <label for="file-upload" class="upload-label">
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Clique para enviar uma foto (opcional)</span>
+      </label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)" accept=".jpg,.jpeg,.png" hidden>
+      
+      <!-- Preview da foto -->
+      <div class="photo-preview-container" *ngIf="fotoUrl">
+        <img [src]="fotoUrl" alt="Preview da Foto do Assessor" class="photo-preview">
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="botoes-acao">
+      <button mat-stroked-button color="warn" type="button" routerLink="/assessores">
+        Cancelar
+      </button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

@@ -14,7 +14,7 @@ import { PossuiPlanoDiretor } from '../../../shared/models/municipio.model';
 })
 export class MunicipioList implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'possui_plano_diretor', 'prefeito','assessor_responsavel' ,'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'possui_plano_diretor', 'prefeito','assessores' ,'acoes'];
   dataSource = new MatTableDataSource<Municipio>([]);
   totalRegistros = 0;
   busca = '';

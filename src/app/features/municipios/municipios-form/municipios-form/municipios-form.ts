@@ -4,6 +4,8 @@ import { MunicipioService } from '../../../../shared/services/municipio/municipi
 import { ActivatedRoute, Router } from '@angular/router';
 import { Municipio } from '../../../../shared/models/municipio.model';
 import { PossuiPlanoDiretor } from '../../../../shared/models/municipio.model';
+import { Assessor } from '../../../../shared/models/assessor.model';
+import { AssessorService } from '../../../../shared/services/assessor/assessor-service';
 
 @Component({
   selector: 'app-municipios-form',
@@ -16,6 +18,7 @@ export class MunicipiosForm implements OnInit {
   form!: FormGroup;
   id!: number | null;
   titulo = 'Novo Município';
+  assessoresDisponiveis : Assessor[] = [];
 
   PossuiPlanoDiretor = PossuiPlanoDiretor; // <- referencia o enum para usar no template
 
@@ -23,7 +26,8 @@ export class MunicipiosForm implements OnInit {
     private fb: FormBuilder,
     private municipioService: MunicipioService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private assessorService: AssessorService
   ) {}
 
     planoDiretorOptions = [
@@ -37,9 +41,12 @@ export class MunicipiosForm implements OnInit {
       nome: ['', Validators.required],
       possui_plano_diretor: [false, Validators.required],
       prefeito: [''],
-      assessor_responsavel: ['']
+      assessores: ['']
     });
-
+    
+    this.assessorService.listar().subscribe(res => {
+      this.assessoresDisponiveis = res.data;
+    })
     // Verifica se está em edição
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     if (this.id) {
@@ -53,20 +60,28 @@ export class MunicipiosForm implements OnInit {
   salvar() {
     if (this.form.invalid) return;
 
-    const municipio: Municipio = this.form.value;
+    const formValue = this.form.value;
+
+    // Garante que os assessores sejam enviados como array de IDs
+    const municipio: Municipio = {
+      ...formValue,
+      assessores: formValue.assessores?.map((a: any) => a.id) || []
+    };
 
     if (this.id) {
-      // edição
+      // Edição
       this.municipioService.atualizar(this.id, municipio).subscribe(() => {
         alert('Município atualizado com sucesso!');
         this.router.navigate(['/municipios']);
       });
     } else {
-      // criação
+      // Criação
       this.municipioService.criar(municipio).subscribe(() => {
         alert('Município criado com sucesso!');
         this.router.navigate(['/municipios']);
       });
     }
+
+
   }
 }

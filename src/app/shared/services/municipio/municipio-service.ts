@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environments';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Municipio } from '../../models/municipio.model';
 
@@ -31,7 +31,8 @@ listar(skip: number, limit: number, nome?: string, assessor?: string): Observabl
   }
 
   buscarPorAssessor(nome: string): Observable<Municipio[]> {
-    return this.http.get<Municipio[]>(`${this.apiUrl}/busca/assessor/?nome=${nome}`);
+  const params = new HttpParams().set('assessor', nome);  // nome do param deve bater com o do FastAPI
+  return this.http.get<Municipio[]>(`${this.apiUrl}/busca/assessor`, { params });
   }
 
   contar(): Observable<number> {
